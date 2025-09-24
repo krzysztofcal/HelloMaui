@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using HelloMaui.Core;
 using HelloMaui.Services;
 using Microsoft.Maui.Accessibility;
 
@@ -9,7 +10,7 @@ public partial class MainPageViewModel : ObservableObject
 {
 	private readonly IAlertService alertService;
 	private int count;
-	private string counterButtonText = "Click me";
+	private string counterButtonText = CounterMessageFormatter.GetMessage(0);
 
 	public MainPageViewModel(IAlertService alertService)
 	{
@@ -33,7 +34,7 @@ public partial class MainPageViewModel : ObservableObject
 	{
 		Count++;
 
-		CounterButtonText = Count == 1 ? "Clicked 1 time" : $"Clicked {Count} times";
+		CounterButtonText = CounterMessageFormatter.GetMessage(Count);
 
 		SemanticScreenReader.Announce(CounterButtonText);
 	}
@@ -45,4 +46,5 @@ public partial class MainPageViewModel : ObservableObject
 		await alertService.ShowAlertAsync("About", message, "OK");
 	}
 }
+
 

@@ -65,4 +65,13 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.5" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<Compile Remove="tests\**\*.cs" />
+		<Compile Remove="src\**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="src\HelloMaui.Core\HelloMaui.Core.csproj" />
+	</ItemGroup>
+
 </Project>
